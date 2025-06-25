@@ -29,3 +29,4 @@ inventory - This is the .ini file that defines the hosts (accessible in Ansible)
 - Alpine Linux: echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel (Hint: Alter sudo group)
 - Alpine Linux: chmod 0440 /etc/sudoers.d/wheel (Hint: Alter sudo group)
 - Alpine Linux: sudo adduser ansible wheel
+- RHEL9 Linux: sudo usermod -aG wheel ansible
