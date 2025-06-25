@@ -1,0 +1,22 @@
+---
+- name: Gather facts and display it
+  hosts: alpine.ansible.com
+  gather_facts: true
+  become: true
+  tasks:
+    - name: Install apache webserver
+      community.general.apk:
+        name: apache2
+        state: present
+
+    - name: Start and enable apache
+      ansible.builtin.service:
+        name: apache2
+        state: started
+        enabled: true
+
+    - name: Write a simple index.html file
+      ansible.builtin.lineinfile:
+        path: /var/www/html/index.html
+        line: "<h1>Hello World!</h1>"
+        create: true
