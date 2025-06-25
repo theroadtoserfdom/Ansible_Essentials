@@ -15,3 +15,17 @@ webserver.yml - This allows for a webserver deployment for Alpine Linux
 # Ansible_Configuration
 ansible.cfg - Use case displayed in this repository is host_key_checking = False (Hint: If DNS is not configured)
 inventory - This is the .ini file that defines the hosts (accessible in Ansible) and the associated ssh logins and root escalation path(s) [Note: Not for PRODUCTION USE]
+
+# Requirements
+- Python3: pip install ansible (YUM and APK)
+- sshpass: Alpine Linux (apk add)
+- sudo: Alpine Linux (apk add)
+
+# Useful_Commands
+- Authenticated Playbook: ansible-playbook -i inventory -u ansible --ask-pass idempotent.yml
+- Unauthenticated Playbook: ansible-playbook -i inventory vcl.yml
+- Webserver Validation: curl http://172.18.117.179
+- Alpine Linux: su - root (sudo command equivalent)
+- Alpine Linux: echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel (Hint: Alter sudo group)
+- Alpine Linux: chmod 0440 /etc/sudoers.d/wheel (Hint: Alter sudo group)
+- Alpine Linux: sudo adduser ansible wheel
